@@ -1,0 +1,69 @@
+import { GridBox } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    callback x_input(string);
+    callback y_input(string);
+    in property <string> x_corner;
+    in property <string> y_corner;
+
+    background: black;
+    width: 800px;
+    height: 600px;
+
+    VerticalLayout {
+        spacing: 4px;
+        padding: 4px;
+        HorizontalLayout {
+            spacing: 4px;
+            height: 20px;
+            TextInput {
+                text: "";
+                horizontal-stretch: 1;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+
+                accepted => {
+                    root.x_input(self.text);
+                }
+            }
+            TextInput {
+                text: "";
+                horizontal-stretch: 1;
+                vertical-alignment: center;
+                horizontal-alignment: center;
+
+                accepted => {
+                    root.y_input(self.text);
+                }
+            }
+        }
+
+        HorizontalLayout {
+            spacing: 4px;
+            vertical-stretch: 2;
+
+            Rectangle {
+                background: #111111;
+                horizontal-stretch: 1;
+                Text { text: x_corner;}
+            }
+            Rectangle {
+                background: #111111;
+                horizontal-stretch: 1;
+                Text { text: y_corner;}
+            }
+        }
+        HorizontalLayout {
+            vertical-stretch: 2;
+            spacing: 4px;
+            Rectangle {
+                background: #111111;
+                Text { text: "3";}
+            }
+            Rectangle {
+                background: #111111;
+                Text { text: "4";}
+            }
+        }
+    }
+}
